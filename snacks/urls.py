@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import home_view_Page , snack_list_Page , snack_detail_View
+from .views import home_view_Page , SnackListView  , SnackDetailView  , SnackCreateView  ,SnackUpdateView  , SnackDeleteView 
 
 urlpatterns = [
     path('', home_view_Page.as_view(),name = 'home'),
-    path('snack_list', snack_list_Page.as_view(),name = 'snacks'),
-    path('<int:pk>/',snack_detail_View.as_view(), name="snack_detail")
+    path('snack_list', SnackListView .as_view(),name = 'snacks'),
+    path('<int:pk>/',SnackDetailView.as_view(), name="snack_detail"),
+    path('create/',SnackCreateView.as_view(), name="snack_create") , 
+    path('update/<int:pk>',SnackUpdateView.as_view(), name="snack_update"), 
+    path('delete/<int:pk>',SnackDeleteView.as_view(), name="snack_delete")
    
 ]
